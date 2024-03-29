@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   let startButton = document.querySelector('#start-game');
 
-  startButton.addEventListener('click', () => {
+  function startGameHandler() {
     Game();
     startButton.style.display = 'none';
-  });
+  }
+  startButton.addEventListener('click', startGameHandler);
 
   function Game() {
     // Selecting DOM elements
@@ -126,6 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
       document.removeEventListener('keyup', control);
       ground.classList.add('ground');
       ground.classList.remove('ground-moving');
+
+      // display gameover
+      const scoreBar = document.querySelector('.score');
+      scoreBar.remove();
+      startButton.innerHTML = `<div>Your score</div><div>${score}</div>`;
+      startButton.style.fontSize = '40px';
+      startButton.style.left = '15%';
+      startButton.style.display = 'block';
+      startButton.style.fontFamily = "'Press Start 2P', cursive";
+      startButton.removeEventListener('click', startGameHandler);
+
+      // ways to restart the game
+      startButton.addEventListener('click', () => location.reload());
+      document.addEventListener('keyup', () => location.reload());
     }
   }
 });
