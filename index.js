@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateObstacle() {
       if (!isGameOver) {
         // Set obstacle properties
-        let obstaclePositionX = 500;
+        let obstaclePositionX = 450;
         let randomHeight = Math.random() * 60;
         let obstaclePositionY = randomHeight;
 
@@ -130,16 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // display gameover
       const scoreBar = document.querySelector('.score');
+      const buttonSection = document.querySelector('.button-section');
+
       scoreBar.remove();
       startButton.innerHTML = `<div>Your score</div><div>${score}</div>`;
       startButton.style.fontSize = '40px';
-      startButton.style.left = '15%';
+      startButton.style.left = '30%';
       startButton.style.display = 'block';
       startButton.style.fontFamily = "'Press Start 2P', cursive";
       startButton.removeEventListener('click', startGameHandler);
 
       // ways to restart the game
-      startButton.addEventListener('click', () => location.reload());
+      buttonSection.addEventListener('click', () => location.reload());
       document.addEventListener('keyup', () => location.reload());
     }
   }
