@@ -129,9 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(gameTimerId);
       console.log('Game over');
       isGameOver = true;
-      document.removeEventListener('keyup', control);
       ground.classList.add('ground');
       ground.classList.remove('ground-moving');
+
+      // removin listeners
+      document.removeEventListener('keyup', control);
+      buttonSection.removeEventListener('click', control);
 
       // display gameover
       startButton.innerHTML = `<div>Your score</div><div>${score}</div>`;
@@ -142,8 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.querySelector('.score').remove(); // removing scorebar
       // ways to restart the game
-      buttonSection.addEventListener('click', () => location.reload());
-      document.addEventListener('keyup', () => location.reload());
+      setTimeout(() => {
+        buttonSection.addEventListener('click', () => location.reload());
+        document.addEventListener('keyup', () => location.reload());
+      }, 1000);
     }
   }
 });
