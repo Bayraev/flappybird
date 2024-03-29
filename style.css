@@ -3,6 +3,7 @@
     width: 500px;
     height: 730px;
     z-index: 2;
+    user-select: none;
 }
 
 button {
@@ -13,6 +14,7 @@ button {
     top: 35%;
     left: 43%;
     color: gold;
+    user-select: inherit;
 }
 body {
     display: flex;

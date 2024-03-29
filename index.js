@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function Game() {
     // removing old event listener from keyup
     document.removeEventListener('keyup', startGameHandler);
+    buttonSection.removeEventListener('click', startGameHandler);
+
     // Selecting DOM elements
     const bird = document.querySelector('.bird');
     const gameDisplay = document.querySelector('.game-container');
@@ -35,12 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameTimerId = setInterval(startGame, 20);
 
     // Handle jump control
-    function control(e) {
-      if (e.keyCode === 32 && !isGameOver) {
-        jump();
-      }
+    function control() {
+      jump();
     }
     document.addEventListener('keyup', control);
+    buttonSection.addEventListener('click', control);
 
     // Bird jump action
     function jump() {
@@ -139,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
       startButton.style.display = 'block';
       startButton.style.fontFamily = "'Press Start 2P', cursive";
 
-      buttonSection.removeEventListener('click', startGameHandler);
       document.querySelector('.score').remove(); // removing scorebar
       // ways to restart the game
       buttonSection.addEventListener('click', () => location.reload());
