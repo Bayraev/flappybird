@@ -1,11 +1,17 @@
-button {
+.button-section {
     position: absolute;
-    font-size: 100px;
+    width: 500px;
+    height: 730px;
     z-index: 2;
+}
+
+button {
+    position: relative;
+    font-size: 100px;
     background-color: #00000000;
     border: none;
-    top: 30%;
-    left: 20%;
+    top: 35%;
+    left: 43%;
     color: gold;
 }
 body {
